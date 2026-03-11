@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --primary-gold: #D9940B;
+    --logo-red: #BF1C13;
+    --text-dark: #2D3436;
+    --bg-light: #FFFFFF;
+    --bg-soft: #F7F7F7;
+    --bg-dark: #111111;
+
+    --background: 0 0% 100%;
+    --foreground: 195 11% 21%;
+    --card: 0 0% 100%;
+    --card-foreground: 195 11% 21%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 195 11% 21%;
+    --primary: 39 89% 45%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 97%;
+    --secondary-foreground: 195 11% 21%;
+    --muted: 0 0% 97%;
+    --muted-foreground: 195 7% 45%;
+    --accent: 0 0% 97%;
+    --accent-foreground: 195 11% 21%;
+    --destructive: 5 87% 41%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 89%;
+    --input: 0 0% 89%;
+    --ring: 39 89% 45%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Loading Animation - Sequential phases controlled by JS */
+
+/* Navbar gold underline */
+@keyframes underline-expand {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Fade in up animation */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.7s cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+
+/* Staggered delays */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+.delay-600 { animation-delay: 600ms; }
+.delay-700 { animation-delay: 700ms; }
+.delay-800 { animation-delay: 800ms; }
