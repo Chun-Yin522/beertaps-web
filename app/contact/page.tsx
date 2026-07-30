@@ -1,11 +1,13 @@
 import type { Metadata } from "next"
 import { ContactContent } from "@/components/contact-content"
+import { buildPageMetadata } from "@/lib/metadata"
 
-export const metadata: Metadata = {
-  title: "聯絡我們｜塔普斯 Beer Taps 啤酒機・出酒設備",
+export const metadata: Metadata = buildPageMetadata({
+  title: "聯絡我們",
   description:
-    "聯絡塔普斯 Beer Taps，取得專業啤酒機、出酒設備規劃與安裝諮詢。我們提供免費場地評估與報價服務。",
-}
+    "聯絡 Beer Taps 討論啤酒龍頭、飲品出酒設備、吧檯設備與客製化商用設備需求。",
+  path: "/contact",
+})
 
 export default function ContactPage() {
   return <ContactContent />

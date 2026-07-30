@@ -1,94 +1,49 @@
 "use client"
 
-import { ClipboardList, Palette, Truck, Settings } from "lucide-react"
+import { ClipboardList, Palette, Settings, Truck } from "lucide-react"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 
 const steps = [
-  {
-    icon: ClipboardList,
-    title: "專業規劃",
-    description: "根據您的場地與需求，提供最適合的設備配置與動線規劃。",
-  },
-  {
-    icon: Palette,
-    title: "客製設計",
-    description: "依照品牌風格與空間條件，量身打造獨一無二的出酒系統。",
-  },
-  {
-    icon: Truck,
-    title: "到府安裝",
-    description: "專業技術團隊到場安裝，確保設備穩定運作。",
-  },
-  {
-    icon: Settings,
-    title: "售後服務",
-    description: "完善的維修保養服務，讓您的設備始終保持最佳狀態。",
-  },
+  { icon: ClipboardList, title: "需求確認", description: "整理營業型態、飲品品項、預估出杯量、空間條件與時程。" },
+  { icon: Palette, title: "系統配置", description: "依操作動線規劃龍頭、冷卻、管線與設備位置，確認可執行規格。" },
+  { icon: Truck, title: "製作安裝", description: "整合設備與現場施工，控制細節、穩定性及空間完成度。" },
+  { icon: Settings, title: "測試交付", description: "完成流速與壓力測試，說明操作方式並提供後續維護建議。" },
 ]
 
 export function ProcessSection() {
-  const { ref, isVisible } = useScrollAnimation(0.15)
+  const { ref, isVisible } = useScrollAnimation(0.1)
 
   return (
-    <section ref={ref} className="bg-bg-soft py-24 lg:py-32">
+    <section ref={ref} className="overflow-hidden bg-bg-dark py-24 text-bg-light lg:py-36">
       <div className="mx-auto max-w-site px-6">
-        <div className="mb-20 text-center">
-          <p
-            className={`mb-3 text-xs font-semibold uppercase tracking-[0.3em] text-gold ${
-              isVisible ? "animate-fade-in-up" : "opacity-0"
-            }`}
-          >
-            Our Process
-          </p>
-          <h2
-            className={`font-display text-3xl font-bold text-text-dark md:text-4xl ${
-              isVisible ? "animate-fade-in-up delay-200" : "opacity-0"
-            }`}
-          >
-            <span className="text-balance">從規劃到完工，一站式服務</span>
-          </h2>
+        <div className="mb-16 lg:mb-24">
+          <p className="mb-5 font-display text-xs uppercase tracking-[0.24em] text-gold">Working process / 02</p>
+          <h2 className="mb-7 text-4xl font-normal leading-[1.3] md:text-6xl lg:whitespace-nowrap">讓每個決定，都能落實在營業現場</h2>
+          <p className="text-lg leading-8 text-bg-light/60 lg:whitespace-nowrap">從第一輪需求到安裝後測試，每個階段都有清楚的確認重點，降低設備與現場條件不一致的風險。</p>
         </div>
 
-        {/* Timeline layout */}
         <div className="relative">
-          {/* Connecting line - desktop only */}
-          <div className="absolute left-0 right-0 top-10 hidden h-px bg-border lg:block" />
-
-          <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="absolute left-0 right-0 top-10 hidden h-px bg-bg-light/20 lg:block">
+            <span className={`block h-px bg-gold transition-[width] duration-[1400ms] ease-out ${isVisible ? "w-full" : "w-0"}`} />
+          </div>
+          <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
             {steps.map((step, index) => (
-              <div
+              <article
                 key={step.title}
-                className={`group relative flex flex-col items-center text-center ${
-                  isVisible ? "animate-fade-in-up" : "opacity-0"
-                }`}
-                style={{
-                  animationDelay: isVisible
-                    ? `${(index + 2) * 150}ms`
-                    : undefined,
-                }}
+                className={`group relative border-t border-bg-light/20 pt-7 lg:border-0 lg:pt-0 ${isVisible ? "animate-fade-in-up" : "opacity-0"}`}
+                style={{ animationDelay: isVisible ? `${index * 160}ms` : undefined }}
               >
-                {/* Circle icon with animated ring */}
-                <div className="relative mb-8">
-                  {/* Step badge - positioned above with higher z-index */}
-                  <span className="absolute -right-1 -top-1 z-20 flex h-7 w-7 items-center justify-center rounded-full bg-gold text-xs font-bold text-bg-light shadow-md">
-                    {index + 1}
-                  </span>
-                  <div className="relative z-10 flex h-20 w-20 items-center justify-center rounded-full border-2 border-border bg-bg-light transition-all duration-500 group-hover:border-gold group-hover:shadow-[0_0_0_6px_rgba(217,148,11,0.1)]">
-                    <step.icon
-                      className="h-8 w-8 text-gold"
-                      strokeWidth={1.5}
-                    />
-                  </div>
+                <div className="relative mb-10 hidden h-20 w-20 items-center justify-center rounded-full border border-bg-light/25 bg-bg-dark transition-all duration-500 group-hover:-translate-y-2 group-hover:border-gold group-hover:bg-gold lg:flex">
+                  <step.icon className="h-8 w-8 text-gold transition-colors duration-500 group-hover:text-bg-dark" strokeWidth={1.35} aria-hidden="true" />
+                  <span className="absolute -right-1 -top-1 flex h-6 w-6 items-center justify-center rounded-full bg-gold font-display text-[10px] text-bg-dark transition-colors group-hover:bg-bg-light">0{index + 1}</span>
                 </div>
-
-                {/* Text */}
-                <h3 className="mb-3 font-display text-lg font-semibold text-text-dark">
-                  {step.title}
-                </h3>
-                <p className="text-sm leading-relaxed text-muted-foreground">
-                  {step.description}
-                </p>
-              </div>
+                <div className="mb-6 flex items-center gap-4 lg:hidden">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-full border border-gold/60"><step.icon className="h-5 w-5 text-gold" strokeWidth={1.4} aria-hidden="true" /></span>
+                  <span className="font-display text-xs tracking-[0.2em] text-gold">0{index + 1}</span>
+                </div>
+                <h3 className="mb-5 text-2xl font-normal transition-colors duration-300 group-hover:text-gold">{step.title}</h3>
+                <p className="text-base leading-7 text-bg-light/60">{step.description}</p>
+              </article>
             ))}
           </div>
         </div>

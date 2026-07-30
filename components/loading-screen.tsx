@@ -3,20 +3,22 @@
 import { useEffect, useState } from "react"
 import { useLoading } from "@/contexts/loading-context"
 
+const logoSrc = "/images/beer-taps-logo-ui.png"
+const outlineLogoSrc = "/images/beer-taps-logo-outline.png"
+
 export function LoadingScreen() {
   const { isLoading, finishLoading } = useLoading()
   const [initialLoad, setInitialLoad] = useState(true)
   const [fading, setFading] = useState(false)
   const [visible, setVisible] = useState(true)
 
-  // Initial page load animation
   useEffect(() => {
     if (initialLoad) {
-      const fadeTimer = setTimeout(() => setFading(true), 2500)
+      const fadeTimer = setTimeout(() => setFading(true), 1700)
       const hideTimer = setTimeout(() => {
         setVisible(false)
         setInitialLoad(false)
-      }, 3000)
+      }, 2000)
 
       return () => {
         clearTimeout(fadeTimer)
@@ -25,19 +27,21 @@ export function LoadingScreen() {
     }
   }, [initialLoad])
 
-  // Triggered loading (from logo click)
   useEffect(() => {
     if (isLoading && !initialLoad) {
-      setVisible(true)
-      setFading(false)
+      const resetTimer = setTimeout(() => {
+        setVisible(true)
+        setFading(false)
+      }, 0)
 
-      const fadeTimer = setTimeout(() => setFading(true), 2500)
+      const fadeTimer = setTimeout(() => setFading(true), 1700)
       const hideTimer = setTimeout(() => {
         setVisible(false)
         finishLoading()
-      }, 3000)
+      }, 2000)
 
       return () => {
+        clearTimeout(resetTimer)
         clearTimeout(fadeTimer)
         clearTimeout(hideTimer)
       }
@@ -54,32 +58,45 @@ export function LoadingScreen() {
       }`}
       aria-hidden="true"
     >
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src="https://github.com/Chun-Yin522/beertaps/blob/main/website/BEER%20TAPS1.png?raw=true"
-        alt="Loading"
-        className="preloader-logo w-[180px]"
-      />
-
-      <style jsx>{`
-        .preloader-logo {
-          animation: 
-            wipe-in 1s cubic-bezier(0.25, 1, 0.5, 1) forwards,
-            scale-exit 1s ease-in-out 1.5s forwards;
-          clip-path: inset(100% 0 0 0);
-        }
-
-        @keyframes wipe-in {
-          0% { clip-path: inset(100% 0 0 0); opacity: 0; }
-          100% { clip-path: inset(0 0 0 0); opacity: 1; }
-        }
-
-        @keyframes scale-exit {
-          0% { transform: scale(1); opacity: 1; }
-          50% { transform: scale(1.2); opacity: 1; }
-          100% { transform: scale(0); opacity: 0; }
-        }
-      `}</style>
+      <div className="preloader-mark" aria-hidden="true">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={outlineLogoSrc} alt="" className="preloader-logo-outline" />
+        <svg
+          className="preloader-logo-fill"
+          viewBox="0 0 1600 1600"
+          role="presentation"
+        >
+          <defs>
+            <clipPath id="preloader-water-clip" clipPathUnits="userSpaceOnUse">
+              <path
+                className="preloader-water-shape"
+                transform="translate(0 1780)"
+                d="M -2400 0
+                   C -2280 -75 -2120 -75 -2000 0
+                   C -1880 75 -1720 75 -1600 0
+                   C -1480 -75 -1320 -75 -1200 0
+                   C -1080 75 -920 75 -800 0
+                   C -680 -75 -520 -75 -400 0
+                   C -280 75 -120 75 0 0
+                   C 120 -75 280 -75 400 0
+                   C 520 75 680 75 800 0
+                   C 920 -75 1080 -75 1200 0
+                   C 1320 75 1480 75 1600 0
+                   C 1720 -75 1880 -75 2000 0
+                   C 2120 75 2280 75 2400 0
+                   L 2400 3400 L -2400 3400 Z"
+              />
+            </clipPath>
+          </defs>
+          <image
+            href={logoSrc}
+            width="1600"
+            height="1600"
+            preserveAspectRatio="xMidYMid meet"
+            clipPath="url(#preloader-water-clip)"
+          />
+        </svg>
+      </div>
     </div>
   )
 }

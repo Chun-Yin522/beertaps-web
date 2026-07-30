@@ -8,7 +8,6 @@ export function BackToTop() {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Show button after scrolling down 400px
       setVisible(window.scrollY > 400)
     }
     window.addEventListener("scroll", handleScroll, { passive: true })
@@ -30,7 +29,7 @@ export function BackToTop() {
           ? "translate-y-0 opacity-100"
           : "pointer-events-none translate-y-4 opacity-0"
       }`}
-      aria-label="回到頂部"
+      aria-label="回到頁面頂端"
     >
       <ChevronUp className="h-5 w-5" strokeWidth={2.5} />
     </button>

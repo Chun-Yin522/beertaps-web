@@ -2,127 +2,110 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { Navbar } from "@/components/navbar"
+import {
+  ArrowDownRight,
+  Gauge,
+  LayoutGrid,
+  Ruler,
+  Sparkles,
+} from "lucide-react"
 import { Footer } from "@/components/footer"
+import { Navbar } from "@/components/navbar"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
+import { PRODUCTS } from "@/data/products"
 
-const categories = [
-  {
-    id: "small",
-    name: "小型啤酒機",
-    tagline: "適合空間有限或初創店家，靈活高效。",
-    image: "/images/product-draft-system.jpg",
-    imageAlt: "小型啤酒機設備",
-    href: "/products/small",
-  },
-  {
-    id: "large",
-    name: "大型出酒系統",
-    tagline: "多路供應，滿足高出杯量需求。",
-    image: "/images/product-tower-system.jpg",
-    imageAlt: "大型出酒系統設備",
-    href: "/products/large",
-  },
-  {
-    id: "wall",
-    name: "壁出式啤酒牆",
-    tagline: "空間美學與功能的完美結合。",
-    image: "/images/product-cooling-system.jpg",
-    imageAlt: "壁出式啤酒牆設備",
-    href: "/products/wall",
-  },
-  {
-    id: "custom",
-    name: "特殊造型設計",
-    tagline: "品牌識別度的極致展現。",
-    image: "/images/product-complete-setup.jpg",
-    imageAlt: "特殊造型設計出酒設備",
-    href: "/products/custom",
-  },
-]
+const categoryIcons = {
+  gauge: Gauge,
+  grid: LayoutGrid,
+  ruler: Ruler,
+  sparkles: Sparkles,
+}
 
-function ProductCard({
+function ProductRouteCard({
   category,
   index,
 }: {
-  category: (typeof categories)[number]
+  category: (typeof PRODUCTS)[number]
   index: number
 }) {
-  const { ref, isVisible } = useScrollAnimation(0.1)
+  const Icon = categoryIcons[category.icon]
 
   return (
     <Link
-      ref={ref}
       href={category.href}
-      className={`group block overflow-hidden rounded-lg bg-bg-light p-6 shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1 ${
-        isVisible ? "animate-fade-in-up" : "opacity-0"
-      }`}
-      style={{
-        animationDelay: isVisible ? `${(index + 1) * 150}ms` : undefined,
-      }}
+      className="group grid min-h-[25rem] grid-rows-[auto_1fr_auto] border border-border bg-bg-light transition-colors hover:border-gold"
     >
-      {/* Image with scale on hover */}
-      <div className="overflow-hidden rounded-lg mb-4">
+      <span className="relative block aspect-[4/3] overflow-hidden border-b border-border bg-bg-soft">
         <Image
-          src={category.image || "/placeholder.svg"}
-          alt={category.imageAlt}
-          width={600}
-          height={400}
-          className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
+          src={category.image}
+          alt={category.name}
+          fill
+          sizes="(min-width: 1024px) 25vw, (min-width: 768px) 50vw, 100vw"
+          className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
         />
-      </div>
-      <h2 className="text-2xl font-semibold text-text-dark mb-2 transition-colors duration-300 group-hover:text-gold">
-        {category.name}
-      </h2>
-      <p className="text-muted-foreground mb-4">
-        {category.tagline}
-      </p>
-      <span className="font-semibold text-gold flex items-center">
-        查看案例
-        <svg
-          className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M9 5l7 7-7 7"
-          />
-        </svg>
+        <span className="absolute left-5 top-5 font-display text-xs text-bg-light drop-shadow">0{index + 1}</span>
+        <span className="absolute right-5 top-5 flex h-10 w-10 items-center justify-center border border-bg-light/35 bg-bg-dark/20 text-bg-light backdrop-blur-sm transition-colors group-hover:border-gold group-hover:text-gold">
+          <Icon className="h-4 w-4" aria-hidden="true" />
+        </span>
+      </span>
+
+      <span className="block px-6 pt-6 md:px-7">
+        <span className="mb-3 block whitespace-nowrap font-display text-xs uppercase tracking-[0.2em] text-gold">
+          {category.eyebrow}
+        </span>
+        <span className="mb-5 block text-2xl leading-9 text-text-dark md:text-3xl">
+          {category.name}
+        </span>
+        <span className="block text-sm leading-7 text-muted-foreground">
+          {category.routeTagline}
+        </span>
+      </span>
+
+      <span className="flex items-end justify-between gap-6 px-6 pb-6 pt-8 md:px-7 md:pb-7">
+        <span>
+          <span className="mb-3 block text-sm text-text-dark">{category.routeNote}</span>
+          <span className="flex flex-wrap gap-x-3 gap-y-2">
+            {category.fit.map((item) => (
+              <span key={item} className="text-xs leading-5 text-muted-foreground">
+                {item}
+              </span>
+            ))}
+          </span>
+        </span>
+        <ArrowDownRight className="h-5 w-5 shrink-0 text-text-dark transition-transform group-hover:translate-x-1 group-hover:translate-y-1 group-hover:text-gold" aria-hidden="true" />
       </span>
     </Link>
   )
 }
 
 export function ProductsContent() {
+  const { ref, isVisible } = useScrollAnimation(0.08)
+
   return (
     <>
       <Navbar />
       <main className="pt-[72px]">
-        {/* Page Header - Smaller dark area */}
-        <section className="bg-bg-dark py-12 lg:py-16">
-          <div className="mx-auto max-w-site px-6 text-center">
-            <p className="mb-2 text-xs font-semibold uppercase tracking-[0.3em] text-gold">
-              Products
-            </p>
-            <h1 className="mb-3 font-display text-3xl font-bold text-bg-light md:text-4xl">
-              <span className="text-balance">產品介紹</span>
-            </h1>
-            <p className="mx-auto max-w-md text-sm leading-relaxed text-bg-light/60">
-              從小型啤酒機到特殊造型設計，為您的店面提供最合適的商用啤酒設備方案。
-            </p>
-          </div>
-        </section>
+        <section ref={ref} className="overflow-hidden bg-bg-light py-14 lg:py-20">
+          <div className="mx-auto max-w-site px-6">
+            <div className="mb-10 lg:mb-12">
+              <p className="mb-5 font-display text-xs uppercase tracking-[0.24em] text-gold">
+                Products route
+              </p>
+              <h1 className="mb-7 text-4xl font-normal leading-[1.3] text-text-dark md:text-5xl lg:whitespace-nowrap lg:text-6xl">
+                依照現場條件選擇設備方向
+              </h1>
+              <p className="max-w-3xl text-base leading-8 text-muted-foreground lg:whitespace-nowrap">
+                先確認空間、品項、出杯量與品牌需求，再選擇適合的設備形式，降低設備與營業現場不一致的風險。
+              </p>
+            </div>
 
-        {/* Product Grid - 2x2, more padding on sides */}
-        <section className="bg-bg-soft py-16 lg:py-24">
-          <div className="mx-auto max-w-site px-10 md:px-16 lg:px-24">
-            <div className="grid gap-8 md:grid-cols-2">
-              {categories.map((category, index) => (
-                <ProductCard
+            <div
+              className={`grid gap-4 md:grid-cols-2 lg:grid-cols-4 ${
+                isVisible ? "animate-fade-in-up" : "opacity-0"
+              }`}
+            >
+              {PRODUCTS.map((category, index) => (
+                <ProductRouteCard
                   key={category.id}
                   category={category}
                   index={index}
@@ -132,20 +115,28 @@ export function ProductsContent() {
           </div>
         </section>
 
-        {/* CTA - white background */}
-        <section className="bg-bg-light py-16">
-          <div className="mx-auto max-w-site px-6 text-center">
-            <h2 className="mb-3 font-display text-2xl font-bold text-text-dark">
-              <span className="text-balance">找不到適合的產品？</span>
-            </h2>
-            <p className="mx-auto mb-6 max-w-md text-sm leading-relaxed text-muted-foreground">
-              我們提供客製化服務，歡迎聯絡我們討論您的需求。
-            </p>
+        <section className="border-t border-border bg-bg-soft py-14 lg:py-16">
+          <div className="mx-auto grid max-w-site gap-8 px-6 lg:grid-cols-[1fr_auto] lg:items-end">
+            <div>
+              <p className="mb-4 font-display text-xs uppercase tracking-[0.22em] text-gold">Need a route</p>
+              <h2 className="mb-5 text-3xl leading-[1.3] text-text-dark md:text-4xl lg:whitespace-nowrap">
+                不確定適合哪一種設備？
+              </h2>
+              <p className="max-w-2xl text-base leading-8 text-muted-foreground lg:whitespace-nowrap">
+                提供場地照片、吧檯尺寸、飲品品項與預估出杯量，我們可以協助整理初步設備方向。
+              </p>
+            </div>
             <Link
               href="/contact"
-              className="inline-block rounded-lg bg-gold px-8 py-3 text-sm font-semibold tracking-wide text-bg-light transition-colors duration-300 hover:bg-gold-dark"
+              className="group inline-flex items-center justify-between gap-8 border-l border-border pl-6 text-sm text-text-dark transition-colors hover:text-gold"
             >
-              免費諮詢
+              <span>
+                <span className="mb-2 block whitespace-nowrap font-display text-xs uppercase tracking-[0.22em]">
+                  Start planning
+                </span>
+                <span className="whitespace-nowrap">聯絡洽詢</span>
+              </span>
+              <ArrowDownRight className="h-5 w-5 shrink-0 transition-transform group-hover:translate-x-1 group-hover:translate-y-1" aria-hidden="true" />
             </Link>
           </div>
         </section>

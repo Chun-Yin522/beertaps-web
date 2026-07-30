@@ -1,141 +1,165 @@
 "use client"
 
-import { Navbar } from "@/components/navbar"
+import {
+  ArrowUpRight,
+  Facebook,
+  Instagram,
+  Mail,
+  MessageCircle,
+  NotebookPen,
+  Phone,
+  type LucideIcon,
+} from "lucide-react"
 import { Footer } from "@/components/footer"
+import { Navbar } from "@/components/navbar"
+import { SiteShareButton } from "@/components/site-share-button"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
+import { SITE } from "@/data/site"
+
+interface ContactMethodProps {
+  label: string
+  value: string
+  icon: LucideIcon
+  href?: string
+}
+
+const socialLinks = [
+  { label: "Facebook", value: "Beer Taps", href: SITE.social.facebook, icon: Facebook },
+  { label: "Instagram", value: "beertaps_", href: SITE.social.instagram, icon: Instagram },
+  { label: "Blog", value: "Sunny 的飲品設備筆記", href: SITE.social.blog, icon: NotebookPen },
+]
+
+function ContactMethod({ label, value, icon: Icon, href }: ContactMethodProps) {
+  const content = (
+    <>
+      <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-gold bg-gold text-bg-dark transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-[1.03]">
+        <Icon className="h-5 w-5" strokeWidth={1.4} aria-hidden="true" />
+      </span>
+      <span className="min-w-0 flex-1">
+        <span className="mb-1 block font-display text-[11px] uppercase tracking-[0.22em] text-text-dark">
+          {label}
+        </span>
+        <span className="block break-words font-display text-lg leading-8 text-text-dark transition-colors duration-300 group-hover:text-gold">
+          {value}
+        </span>
+      </span>
+      {href && (
+        <ArrowUpRight
+          className="h-5 w-5 shrink-0 text-muted-foreground transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-gold"
+          aria-hidden="true"
+        />
+      )}
+    </>
+  )
+
+  const className =
+    "group grid grid-cols-[3rem_minmax(0,1fr)_auto] items-center gap-5 border-b border-border py-6 text-left first:border-t"
+
+  if (href) {
+    return (
+      <a href={href} className={className}>
+        {content}
+      </a>
+    )
+  }
+
+  return <div className={className}>{content}</div>
+}
 
 export function ContactContent() {
-  const { ref, isVisible } = useScrollAnimation(0.1)
+  const { ref: contactRef, isVisible: contactVisible } = useScrollAnimation(0.08)
 
   return (
     <>
       <Navbar />
       <main className="pt-[72px]">
-        {/* Page Header - Simplified, no dark background */}
-        <section className="bg-bg-light py-16 lg:py-20">
-          <div className="mx-auto max-w-site px-6 text-center">
-            <p className="mb-2 text-xs font-semibold uppercase tracking-[0.3em] text-gold">
-              CONTACT US
-            </p>
-            <h1 className="mb-4 font-display text-3xl font-bold text-text-dark md:text-4xl">
-              <span className="text-balance">聯絡我們</span>
-            </h1>
-            <p className="mx-auto max-w-lg text-base leading-relaxed text-muted-foreground">
-              無論您有任何關於啤酒機、出酒設備的問題，歡迎隨時與我們聯繫
-            </p>
-          </div>
-        </section>
-
-        {/* Contact Section - Two columns: info on left, Google Form on right */}
-        <section ref={ref} className="bg-bg-soft py-16 lg:py-24">
+        <section ref={contactRef} className="bg-bg-soft py-16 lg:py-24">
           <div className="mx-auto max-w-site px-6">
-            <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-              {/* Left side - Contact info */}
-              <div
-                className={`${isVisible ? "animate-fade-in-up" : "opacity-0"}`}
-              >
-                <h2 className="mb-8 font-display text-2xl font-bold text-text-dark">
-                  聯絡資訊
-                </h2>
+            <div className={`mb-16 max-w-5xl lg:mb-20 ${contactVisible ? "animate-fade-in-up" : "opacity-0"}`}>
+              <p className="mb-5 font-display text-xs uppercase tracking-[0.24em] text-gold">
+                Contact us
+              </p>
+              <h1 className="text-4xl font-normal leading-[1.3] text-text-dark md:text-5xl lg:whitespace-nowrap">
+                BEER TAPS 塔普斯，幫你找到適合的設備配置
+              </h1>
+            </div>
 
-                <div className="flex flex-col gap-6">
-                  {/* Phone */}
-                  <a
-                    href="tel:0935635305"
-                    className="group flex items-center gap-5 rounded-xl border border-border bg-bg-light p-5 transition-all hover:border-gold/30 hover:shadow-md"
-                  >
-                    <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-gold/10 transition-colors group-hover:bg-gold/20">
-                      <svg className="h-6 w-6 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
-                      </svg>
-                    </div>
-                    <div>
-                      <p className="mb-0.5 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                        電話
-                      </p>
-                      <p className="text-lg font-medium text-text-dark transition-colors group-hover:text-gold">
-                        0935-635-305
-                      </p>
-                    </div>
-                  </a>
+            <div className="grid gap-16 lg:grid-cols-[0.82fr_1.18fr] lg:gap-20">
+              <div className={contactVisible ? "animate-fade-in-up" : "opacity-0"}>
+                <div className="mb-10">
+                  <p className="mb-4 font-display text-xs uppercase tracking-[0.22em] text-gold">
+                    Direct contact / 01
+                  </p>
+                  <h2 className="mb-5 text-3xl font-normal leading-[1.3] text-text-dark md:text-4xl">
+                    塔普斯專業飲品設備
+                  </h2>
+                  <p className="max-w-md text-base leading-8 text-muted-foreground">
+                    可直接來電、使用 LINE 或寄送 Email，告訴我們目前的場地與設備需求。
+                  </p>
+                </div>
 
-                  {/* LINE */}
-                  <div className="flex items-center gap-5 rounded-xl border border-border bg-bg-light p-5">
-                    <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-gold/10">
-                      <svg className="h-6 w-6 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" />
-                      </svg>
-                    </div>
-                    <div>
-                      <p className="mb-0.5 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                        LINE
-                      </p>
-                      <p className="text-lg font-medium text-text-dark">
-                        sunnylee0218
-                      </p>
-                    </div>
-                  </div>
+                <div>
+                  <ContactMethod label="Phone" value={SITE.phone} href={SITE.phoneHref} icon={Phone} />
+                  <ContactMethod label="LINE" value={SITE.lineId} href={`https://line.me/ti/p/~${SITE.lineId}`} icon={MessageCircle} />
+                  <ContactMethod label="Email" value={SITE.email} href={SITE.emailHref} icon={Mail} />
+                </div>
 
-                  {/* Email */}
-                  <a
-                    href="mailto:sunnyrotary@gmail.com"
-                    className="group flex items-center gap-5 rounded-xl border border-border bg-bg-light p-5 transition-all hover:border-gold/30 hover:shadow-md"
-                  >
-                    <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-gold/10 transition-colors group-hover:bg-gold/20">
-                      <svg className="h-6 w-6 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
-                      </svg>
-                    </div>
-                    <div>
-                      <p className="mb-0.5 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                        Email
-                      </p>
-                      <p className="text-lg font-medium text-text-dark transition-colors group-hover:text-gold">
-                        sunnyrotary@gmail.com
-                      </p>
-                    </div>
-                  </a>
-
-                  {/* Address */}
-                  <div className="flex items-center gap-5 rounded-xl border border-border bg-bg-light p-5">
-                    <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-gold/10">
-                      <svg className="h-6 w-6 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
-                      </svg>
-                    </div>
-                    <div>
-                      <p className="mb-0.5 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                        地址
-                      </p>
-                      <p className="text-lg font-medium text-text-dark">
-                        新北市永和區（全台接案）
-                      </p>
-                    </div>
+                <div className="mt-12">
+                  <p className="mb-5 font-display text-xs uppercase tracking-[0.22em] text-muted-foreground">
+                    Social channels
+                  </p>
+                  <div className="grid border-t border-border sm:grid-cols-2 lg:grid-cols-1">
+                    {socialLinks.map((item) => (
+                      <a
+                        key={item.label}
+                        href={item.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group grid min-h-[86px] min-w-0 grid-cols-[2.75rem_minmax(0,1fr)_auto] items-center gap-4 border-b border-border text-text-dark sm:px-4 sm:odd:pl-0 sm:even:pr-0 lg:px-0"
+                      >
+                        <span className="flex h-11 w-11 items-center justify-center rounded-full border border-gold/45 text-gold transition-colors duration-300 group-hover:border-gold group-hover:bg-gold group-hover:text-bg-dark">
+                          <item.icon className="h-[18px] w-[18px]" strokeWidth={1.5} aria-hidden="true" />
+                        </span>
+                        <span className="min-w-0">
+                          <span className="mb-1 block font-display text-sm text-text-dark">{item.label}</span>
+                          <span className="block truncate font-display text-sm">{item.value}</span>
+                        </span>
+                        <ArrowUpRight
+                          className="h-4 w-4 shrink-0 text-muted-foreground transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-gold"
+                          aria-hidden="true"
+                        />
+                      </a>
+                    ))}
+                    <SiteShareButton variant="contact" />
                   </div>
                 </div>
               </div>
 
-              {/* Right side - Google Form embed */}
-              <div
-                className={`${isVisible ? "animate-fade-in-up delay-200" : "opacity-0"}`}
-              >
-                <h2 className="mb-8 font-display text-2xl font-bold text-text-dark">
-                  諮詢報價
-                </h2>
-                <div className="overflow-hidden rounded-xl border border-border bg-bg-light">
-                  {/* Google Form placeholder - user should replace this URL with their actual form */}
+              <div className={contactVisible ? "animate-fade-in-up delay-200" : "opacity-0"}>
+                <div className="mb-10">
+                  <p className="mb-4 font-display text-xs uppercase tracking-[0.22em] text-gold">
+                    Project brief / 02
+                  </p>
+                  <h2 className="mb-5 text-3xl font-normal leading-[1.3] text-text-dark md:text-4xl">
+                    洽詢表單
+                  </h2>
+                  <p className="max-w-xl text-base leading-8 text-muted-foreground">
+                    提供現場條件、預計需求、飲品品項與預計開業時程，我們會依實際需求協助評估設備方向。
+                  </p>
+                </div>
+
+                <div className="overflow-hidden border border-border bg-bg-light">
                   <iframe
-                    src="https://docs.google.com/forms/d/e/1FAIpQLSdYourFormIdHere/viewform?embedded=true"
+                    src="https://docs.google.com/forms/d/e/1FAIpQLSfTs_DEpT94Umgx5mft9cYF9OGz9l4pwYoUgppLr8A1UM81uA/viewform?embedded=true"
                     width="100%"
-                    height="600"
-                    className="border-0"
-                    title="諮詢報價表單"
+                    height="715"
+                    className="block border-0 bg-bg-light"
+                    title="Beer Taps 洽詢表單"
                   >
-                    載入中…
+                    載入洽詢表單
                   </iframe>
-                  <div className="bg-bg-soft px-6 py-4 text-center text-sm text-muted-foreground">
-                    <p>填寫表單後，我們將盡快與您聯繫</p>
+                  <div className="border-t border-border bg-bg-light px-6 py-5 text-sm leading-7 text-muted-foreground">
+                    表單若無法顯示，也可以直接透過電話、LINE 或 Email 聯絡。
                   </div>
                 </div>
               </div>

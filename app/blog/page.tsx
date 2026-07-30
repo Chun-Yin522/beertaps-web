@@ -1,12 +1,25 @@
 import type { Metadata } from "next"
 import { BlogContent } from "./content"
+import { JsonLd } from "@/components/json-ld"
+import { buildPageMetadata } from "@/lib/metadata"
+import { buildBreadcrumbJsonLd } from "@/lib/structured-data"
 
-export const metadata: Metadata = {
-  title: "知識專欄｜塔普斯 Beer Taps",
+export const metadata: Metadata = buildPageMetadata({
+  title: "知識專欄",
   description:
-    "啤酒機、出酒設備相關知識文章，包含設備選購指南、維護保養技巧、行業趨勢分析等專業內容，幫助您做出最佳的設備決策。",
-}
+    "Beer Taps 分享飲品出酒設備、吧檯設備規劃、維護與商用空間配置的實務觀點。",
+  path: "/blog",
+  image: "/images/gallery/s-takefive-1.jpg",
+})
 
 export default function BlogPage() {
-  return <BlogContent />
+  return (
+    <>
+      <JsonLd data={buildBreadcrumbJsonLd([
+        { name: "首頁", path: "/" },
+        { name: "知識專欄", path: "/blog" },
+      ])} />
+      <BlogContent />
+    </>
+  )
 }

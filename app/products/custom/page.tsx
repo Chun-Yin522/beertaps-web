@@ -1,12 +1,26 @@
 import type { Metadata } from "next"
 import { CustomProductsContent } from "./content"
+import { JsonLd } from "@/components/json-ld"
+import { buildPageMetadata } from "@/lib/metadata"
+import { buildBreadcrumbJsonLd } from "@/lib/structured-data"
 
-export const metadata: Metadata = {
-  title: "特殊造型設計｜塔普斯 Beer Taps",
+export const metadata: Metadata = buildPageMetadata({
+  title: "客製化設備",
   description:
-    "塔普斯 Beer Taps 特殊造型設計出酒設備，為您的品牌量身打造獨一無二的出酒系統。",
-}
+    "Beer Taps 依照品牌風格、空間條件與營運需求，提供客製化飲品設備與吧檯整合規劃。",
+  path: "/products/custom",
+  image: "/images/gallery/c-beercar-1.jpg",
+})
 
 export default function CustomProductsPage() {
-  return <CustomProductsContent />
+  return (
+    <>
+      <JsonLd data={buildBreadcrumbJsonLd([
+        { name: "首頁", path: "/" },
+        { name: "產品頁面", path: "/products" },
+        { name: "客製化設備", path: "/products/custom" },
+      ])} />
+      <CustomProductsContent />
+    </>
+  )
 }
