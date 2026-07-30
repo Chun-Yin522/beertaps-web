@@ -1,5 +1,4 @@
 import { readFile } from "node:fs/promises"
-import path from "node:path"
 import { ImageResponse } from "next/og"
 import { SITE } from "@/data/site"
 
@@ -11,9 +10,7 @@ interface RemoteSocialImageOptions {
   image: string
 }
 
-const iansuiFont = readFile(
-  path.join(process.cwd(), "assets", "fonts", "Iansui-Regular.ttf"),
-)
+const iansuiFont = readFile("assets/fonts/Iansui-Regular.ttf")
 
 export async function createRemoteSocialImage({
   title,
