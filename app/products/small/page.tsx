@@ -9,7 +9,6 @@ export const metadata: Metadata = buildPageMetadata({
   description:
     "Beer Taps 小型啤酒機適合吧檯、餐飲與小型店面使用，協助規劃穩定、俐落且易於維護的商用出杯配置。",
   path: "/products/small",
-  image: "/images/gallery/s-takefive-1.jpg",
 })
 
 export default function SmallProductsPage() {

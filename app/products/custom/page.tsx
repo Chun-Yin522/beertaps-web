@@ -9,7 +9,6 @@ export const metadata: Metadata = buildPageMetadata({
   description:
     "Beer Taps 依照品牌風格、空間條件與營運需求，提供客製化飲品設備與吧檯整合規劃。",
   path: "/products/custom",
-  image: "/images/gallery/c-beercar-1.jpg",
 })
 
 export default function CustomProductsPage() {

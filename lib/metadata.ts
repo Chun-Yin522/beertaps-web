@@ -5,7 +5,6 @@ interface PageMetadataOptions {
   title?: string
   description: string
   path: string
-  image?: string
   type?: "website" | "article"
   authors?: string[]
   publishedTime?: string
@@ -23,6 +22,15 @@ export function buildPageMetadata({
 }: PageMetadataOptions): Metadata {
   const canonical = new URL(path, SITE.url).toString()
   const fullTitle = title ? `${title}｜Beer Taps` : "Beer Taps｜專業飲品出酒設備與吧檯設備"
+  const openGraphImage = new URL(
+    type === "article" ? `${path}/opengraph-image` : "/opengraph-image",
+    SITE.url,
+  ).toString()
+  const twitterImage = new URL(
+    type === "article" ? `${path}/twitter-image` : "/twitter-image",
+    SITE.url,
+  ).toString()
+  const images = [{ url: openGraphImage, width: 1200, height: 630, alt: fullTitle }]
 
   const openGraph: Metadata["openGraph"] = type === "article"
     ? {
@@ -35,6 +43,7 @@ export function buildPageMetadata({
         authors,
         publishedTime,
         modifiedTime,
+        images,
       }
     : {
         type: "website",
@@ -43,6 +52,7 @@ export function buildPageMetadata({
         siteName: SITE.name,
         title: fullTitle,
         description,
+        images,
       }
 
   return {
@@ -55,6 +65,7 @@ export function buildPageMetadata({
       card: "summary_large_image",
       title: fullTitle,
       description,
+      images: [twitterImage],
     },
   }
 }

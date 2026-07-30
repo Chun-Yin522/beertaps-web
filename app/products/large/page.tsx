@@ -9,7 +9,6 @@ export const metadata: Metadata = buildPageMetadata({
   description:
     "Beer Taps 大型出酒系統適合高出杯量、多品項與大型營業空間，提供穩定的商用飲品設備配置。",
   path: "/products/large",
-  image: "/images/gallery/l-submarine-2.jpg",
 })
 
 export default function LargeProductsPage() {

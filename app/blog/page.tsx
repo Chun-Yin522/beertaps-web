@@ -9,7 +9,6 @@ export const metadata: Metadata = buildPageMetadata({
   description:
     "Beer Taps 分享飲品出酒設備、吧檯設備規劃、維護與商用空間配置的實務觀點。",
   path: "/blog",
-  image: "/images/gallery/s-takefive-1.jpg",
 })
 
 export default function BlogPage() {

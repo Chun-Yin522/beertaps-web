@@ -1,12 +1,16 @@
 # 正式網域、社群分享與 Search Console
 
-## 目前狀態（2026-07-28）
+## 目前狀態（2026-07-30）
 
 - 正式主網域：`https://beertaps.tw`
 - `www.beertaps.tw`：轉址至 `https://beertaps.tw`
 - Vercel 顯示兩個網域皆為 `Valid Configuration`
 - DNS 由 Cloudflare 管理，目前應維持灰色雲朵（DNS only）
-- 最新網站程式碼仍只在本機，尚未上傳，也尚未重新部署
+- GitHub `Chun-Yin522/beertaps-web` 的 `main` 已連接 Vercel Production
+- 最新正式部署已完成，`beertaps.tw` 回應正常
+- Search Console 網域資源已驗證
+- `sitemap.xml` 已成功提交並發現 14 個頁面
+- `image-sitemap.xml` 已成功提交並發現 4 個案例分類頁面
 
 目前 Cloudflare DNS：
 
@@ -15,12 +19,10 @@ A      @      216.198.79.1
 CNAME  www    64af9fe9406ea150.vercel-dns-017.com
 ```
 
-不要在最新本機程式碼上傳前重新部署，否則正式網站仍只會取得舊版本。
-
-## 1. 下一次正式部署
+## 1. 後續正式部署
 
 1. 完成內容檢查與正式建置。
-2. 將本機最新版程式碼提交並上傳至 Vercel 連接的 Git 儲存庫。
+2. 將本機最新版程式碼提交並上傳至 Vercel 連接的 Git 儲存庫 `Chun-Yin522/beertaps-web`。
 3. 到 Vercel `Settings > Environment Variables` 的 Production 環境加入或確認：
 
 ```text
@@ -42,8 +44,6 @@ https://beertaps.tw/image-sitemap.xml
 
 ## 2. Google Search Console
 
-這一段要在新版網站完成正式部署後執行。
-
 1. 開啟 Google Search Console，新增「網域」資源，輸入 `beertaps.tw`。
 2. Google 會提供一筆 TXT 驗證值。到 Cloudflare DNS 新增 TXT 紀錄，等待 DNS 生效後回 Search Console 按「驗證」。網域資源會同時涵蓋 `www`、裸網域與不同通訊協定。
 3. 若無法修改 DNS，可改用「網址前置字元」資源，再使用 HTML 標記驗證。將標記 `content` 內的 token 填入 Vercel Production 環境變數：
@@ -52,14 +52,14 @@ https://beertaps.tw/image-sitemap.xml
 GOOGLE_SITE_VERIFICATION=google提供的token
 ```
 
-4. 重新部署後，在 Search Console 的「Sitemap」依序提交：
+4. 重新部署後，在 Search Console 的「Sitemap」確認以下兩項維持成功：
 
 ```text
 sitemap.xml
 image-sitemap.xml
 ```
 
-5. 使用「網址審查」測試首頁、產品頁與一篇專欄文章，確認 Google 可讀取後按「要求建立索引」。
+5. 新增重要頁面或文章後，使用「網址審查」測試該網址，確認 Google 可讀取後按「要求建立索引」。
 6. 上線後每月或內容大幅更新後檢查「網頁索引」、「搜尋結果成效」與「Core Web Vitals」。提交 Sitemap 是發現提示，不保證立即收錄。
 
 使用「網域」資源與 Cloudflare TXT 驗證時，不需要設定 `GOOGLE_SITE_VERIFICATION`。

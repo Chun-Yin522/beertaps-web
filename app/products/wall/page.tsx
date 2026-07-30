@@ -9,7 +9,6 @@ export const metadata: Metadata = buildPageMetadata({
   description:
     "Beer Taps 壁出式啤酒牆協助節省吧檯檯面空間，讓出酒設備與牆面、品牌視覺與操作動線完整整合。",
   path: "/products/wall",
-  image: "/images/gallery/w-sipsip-1.jpg",
 })
 
 export default function WallProductsPage() {

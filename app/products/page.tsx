@@ -9,7 +9,6 @@ export const metadata: Metadata = buildPageMetadata({
   description:
     "Beer Taps 提供小型啤酒機、大型出酒系統、壁出式啤酒牆與客製化設備，協助餐飲與飲品品牌建立穩定營業現場。",
   path: "/products",
-  image: "/images/product-large.jpg",
 })
 
 export default function ProductsPage() {
