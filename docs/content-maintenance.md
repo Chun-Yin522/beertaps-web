@@ -4,7 +4,7 @@
 
 文章列表、SEO 與 Sitemap 共同讀取 `data/blog-posts.ts`。新增一筆 `BLOG_POSTS` 後，網址會是 `/blog/{slug}`；一般文章可直接填入 `content`，以 `### ` 開頭的段落會顯示為小標題。
 
-建議日後由你確認後再增加以下真實資料：
+新增文章時必須填寫作者與真實日期；相關產品、案例連結則依文章內容選填：
 
 ```ts
 author: "作者或團隊名稱"
@@ -14,7 +14,7 @@ relatedProductIds: ["small"]
 relatedCaseIds: ["案例 id"]
 ```
 
-顯示位置建議：作者與日期放在文章標題下方；相關產品與案例放在內文結束、NEXT STEP 之前。未提供真實資料前，不應輸出到畫面或 Article 結構化資料。
+作者與日期會顯示於文章頁首，並同步輸出到 Article 結構化資料。修改文章內容時只更新 `updatedAt`，不要更改原始 `publishedAt`。
 
 ## 新增案例與圖片
 
