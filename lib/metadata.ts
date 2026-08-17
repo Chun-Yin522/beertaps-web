@@ -21,7 +21,7 @@ export function buildPageMetadata({
   modifiedTime,
 }: PageMetadataOptions): Metadata {
   const canonical = new URL(path, SITE.url).toString()
-  const fullTitle = title ? `${title}｜Beer Taps` : "Beer Taps｜專業飲品出酒設備與吧檯設備"
+  const fullTitle = title ? `${title}｜塔普斯 Beer Taps` : "塔普斯 Beer Taps｜專業飲品出酒設備與吧檯設備"
   const openGraphImage = new URL(
     type === "article" ? `${path}/opengraph-image` : "/opengraph-image",
     SITE.url,

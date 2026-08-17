@@ -68,7 +68,8 @@ export function HeroSection() {
             <div className="max-w-4xl">
               <p className={`mb-6 font-display text-base uppercase tracking-[0.28em] text-gold ${isVisible ? "animate-fade-in-up" : "opacity-0"}`}>BEER TAPS beverage systems</p>
               <h1 className={`mb-8 max-w-4xl text-[2.75rem] font-normal leading-[1.18] text-bg-light sm:text-5xl md:text-6xl lg:text-[4.25rem] ${isVisible ? "animate-fade-in-up delay-200" : "opacity-0"}`}>
-                <span className="text-gold">塔普斯</span>專業飲品設備<span className="block text-bg-light">從規劃到穩定營運</span>
+                <span className="block text-gold">塔普斯</span>
+                <span className="block text-bg-light">專業飲品設備</span>
               </h1>
               <p className={`mb-10 max-w-2xl text-base leading-8 text-bg-light/75 md:text-lg lg:max-w-4xl lg:whitespace-nowrap ${isVisible ? "animate-fade-in-up delay-400" : "opacity-0"}`}>
                 整合啤酒龍頭、飲品管線、冷卻系統與吧檯配置，讓設備符合操作動線，<span className="whitespace-nowrap">也能融入品牌空間。</span>
