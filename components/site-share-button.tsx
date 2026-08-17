@@ -20,7 +20,7 @@ interface SiteShareButtonProps {
 }
 
 const websiteShareData = {
-  title: "BEER TAPS 塔普斯",
+  title: "塔普斯 Beer Taps",
   text: "商用飲品設備、啤酒機與出酒系統規劃。",
   url: SITE.url,
 }
@@ -120,7 +120,7 @@ export function SiteShareButton({ variant }: SiteShareButtonProps) {
     <div
       data-site-share-menu
       role="menu"
-      aria-label="分享 BEER TAPS 官網"
+      aria-label="分享塔普斯官網"
       className={className}
     >
       <div className="border-b border-border px-3 pb-2 pt-1">
@@ -162,7 +162,7 @@ export function SiteShareButton({ variant }: SiteShareButtonProps) {
           type="button"
           onClick={() => setIsOpen((open) => !open)}
           className="flex h-9 w-9 items-center justify-center rounded-full bg-[#333] text-bg-light transition-colors duration-300 hover:bg-gold"
-          aria-label="分享 BEER TAPS 官網"
+          aria-label="分享塔普斯官網"
           aria-expanded={isOpen}
           aria-haspopup="menu"
           title="分享官網"
@@ -211,7 +211,7 @@ export function SiteShareButton({ variant }: SiteShareButtonProps) {
         </span>
         <span className="min-w-0">
           <span className="mb-1 block font-display text-sm text-text-dark">Share website</span>
-          <span className="block truncate font-display text-sm">分享 BEER TAPS 官網</span>
+          <span className="block truncate font-display text-sm">分享塔普斯官網</span>
         </span>
         <ChevronDown
           className={`h-4 w-4 shrink-0 text-muted-foreground transition-all duration-300 group-hover:text-gold ${

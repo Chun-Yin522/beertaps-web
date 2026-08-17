@@ -15,6 +15,23 @@ export const largeEquipmentData: EquipmentCategoryPageData = withNonSmallCaseCap
   constructionDescription: "依照冷藏位置、管線距離與多龍頭出杯需求，規劃穩定的供應系統。",
   cases: [
     {
+      id: "l-1915",
+      name: "國門廣場",
+      location: "基隆火車站",
+      category: "餐酒館",
+      heroPosition: "center center",
+      images: [
+        {
+          src: "/images/gallery/l-1915-2.jpg",
+          alt: "國門廣場於基隆火車站餐酒館不鏽鋼吧檯安裝六口多立克酒柱",
+        },
+        {
+          src: "/images/gallery/l-1915-1.jpg",
+          alt: "國門廣場於基隆火車站餐酒館吧檯安裝六口多立克酒柱與長型滴酒盤",
+        }
+      ]
+    },
+    {
       id: "l-blursday",
       name: "Blursday Draft.Cafe",
       location: "台北敦化南路",
@@ -130,6 +147,7 @@ export const largeEquipmentData: EquipmentCategoryPageData = withNonSmallCaseCap
     }
   ],
   featuredCaseIds: [
+    "l-1915",
     "l-dienhua",
     "l-jinjyou",
     "l-submarine",

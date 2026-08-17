@@ -6,7 +6,7 @@ import {
 } from "@/lib/remote-social-image"
 
 export const runtime = "nodejs"
-export const alt = "BEER TAPS 知識專欄文章"
+export const alt = "塔普斯知識專欄文章"
 export const size = REMOTE_SOCIAL_IMAGE_SIZE
 export const contentType = "image/png"
 

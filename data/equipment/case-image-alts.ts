@@ -9,6 +9,7 @@ const CASE_IMAGE_ALTS: Record<string, string> = {
   "c-fizzcar": "微風南山調酒吧餐車安裝八口客製化出酒設備",
   "c-lowfun": "löwfun裸放茶旅茶飲空間安裝客製化出酒設備",
   "c-twohouse": "貳房苑餐廳後廚安裝雙口冰箱外組裝龍頭",
+  "l-1915": "國門廣場於基隆火車站餐酒館吧檯安裝六口多立克酒柱",
   "l-blursday": "Blursday Draft.Cafe 酒吧吧檯安裝十二口多立克酒柱",
   "l-dienhua": "典華幸福大樓餐廳吧檯安裝八口古銅色 Y 字型酒柱",
   "l-jinjyou": "金門酒廠快閃店酒吧吧檯安裝六口原色門型酒柱",
@@ -30,6 +31,7 @@ const CASE_IMAGE_ALTS: Record<string, string> = {
   "s-yzu": "元智大學招待所吧檯安裝雙口原色雅士酒塔",
   "w-16inn": "G16客棧招待所安裝六口壁出式啤酒牆",
   "w-1913": "1913生活聚場招待所安裝八口壁出式啤酒牆與滴酒盤",
+  "w-binglang": "檳榔酒吧於台中安裝十口壁出式啤酒牆",
   "w-blur": "Blur Taipei 酒吧安裝六口壁出式啤酒牆",
   "w-creampuffs": "有口芙 × 有在喝茶飲空間安裝壁出式啤酒牆",
   "w-fuwang": "扶旺號餐酒館安裝單口壁出式啤酒牆",
@@ -48,6 +50,7 @@ const CASE_IMAGE_ALTS: Record<string, string> = {
   "w-sipsip": "SipSip Bar 餐酒館安裝六口壁出式啤酒牆",
   "w-sonyen": "STUCKIN OASIS 酒吧安裝九口壁出式啤酒牆與大理石紋木作牆面",
   "w-tigertown": "XPM somewhere 餐酒館安裝十口壁出式啤酒牆與球型龍頭",
+  "w-tigertownb1": "虎山焱餐廳於台中老虎城木紋美耐板背景牆安裝十口壁出式啤酒牆",
   "w-xiaozhai": "曉宅山民宿餐廳安裝十二口壁出式啤酒牆",
   "w-yoga": "cocoon lab 繭招待所安裝五口壁出式啤酒牆",
 }
@@ -55,6 +58,11 @@ const CASE_IMAGE_ALTS: Record<string, string> = {
 const IMAGE_ALT_OVERRIDES: Record<string, string> = {
   "c-feelingbar-4.jpg": "Feeling Bar 調酒專賣店活動餐車安裝四口桌面酒塔",
   "c-feelingbar-5.jpg": "Feeling Bar 調酒專賣店活動餐車安裝兩支雙口桌面酒塔",
+  "l-1915-1.jpg": "國門廣場於基隆火車站餐酒館吧檯安裝六口多立克酒柱與長型滴酒盤",
+  "l-1915-2.jpg": "國門廣場於基隆火車站餐酒館不鏽鋼吧檯安裝六口多立克酒柱",
+  "w-binglang-1.jpg": "檳榔酒吧於台中螢幕下方安裝十口壁出式啤酒牆",
+  "w-binglang-2.jpg": "檳榔酒吧於台中黑色牆面安裝十口壁出式啤酒牆與長型不鏽鋼滴酒盤",
+  "w-tigertownb1-1.jpg": "虎山焱餐廳於台中老虎城木紋美耐板背景牆安裝十口壁出式啤酒牆並搭配綠葉藤蔓元素",
 }
 
 function getCaseIdFromImage(src: string) {

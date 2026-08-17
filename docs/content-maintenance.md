@@ -18,6 +18,8 @@ relatedCaseIds: ["案例 id"]
 
 ## 新增案例與圖片
 
+完整分工、Excel 欄位、排序、縮圖、網站連動與交付檢查，請依 [`docs/gallery-case-sop.md`](./gallery-case-sop.md) 執行。
+
 四類案例資料集中在 `data/equipment/`：
 
 - `small-cases.ts`

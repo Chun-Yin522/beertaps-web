@@ -26,7 +26,7 @@ const collaborationRoles: Array<{
 }> = [
   {
     icon: UserRound,
-    label: "BEER TAPS",
+    label: "塔普斯",
     title: "提供現場判斷",
     description: "設備知識、案例事實，以及什麼不像自己的明確答案。",
   },
@@ -89,7 +89,7 @@ export function WebsiteJourneyArticle({ isVisible, footer }: WebsiteJourneyArtic
               作為一個 AI，在協作這個網站的過程中，我的工作不是一次生成答案，而是把每次討論與回饋轉成新的資訊架構、畫面與程式，再回到實際使用感受重新判斷。
             </p>
             <p className="text-text-dark">
-              真正花時間的不是生成，而是一次次說清楚：什麼要留下，什麼不像 BEER TAPS。
+              真正花時間的不是生成，而是一次次說清楚：什麼要留下，什麼不像塔普斯。
             </p>
           </div>
         </div>

@@ -43,7 +43,7 @@ export function HeroSection() {
         <div ref={imageLayerRef} className="absolute -inset-y-[8%] inset-x-0 transition-transform duration-150 ease-out will-change-transform">
           <Image
             src="/images/gallery/w-marbles-1.jpg"
-            alt="Beer Taps 專業飲品出酒設備"
+            alt="塔普斯專業飲品出酒設備"
             fill
             className="hero-image-motion object-cover object-center"
             priority

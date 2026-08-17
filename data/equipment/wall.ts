@@ -45,6 +45,23 @@ export const wallEquipmentData: EquipmentCategoryPageData = withNonSmallCaseCapt
       ]
     },
     {
+      id: "w-binglang",
+      name: "檳榔",
+      location: "台中",
+      category: "酒吧",
+      heroPosition: "center center",
+      images: [
+        {
+          src: "/images/gallery/w-binglang-2.jpg",
+          alt: "檳榔酒吧於台中黑色牆面安裝十口壁出式啤酒牆與長型不鏽鋼滴酒盤",
+        },
+        {
+          src: "/images/gallery/w-binglang-1.jpg",
+          alt: "檳榔酒吧於台中螢幕下方安裝十口壁出式啤酒牆",
+        }
+      ]
+    },
+    {
       id: "w-blur",
       name: "Blur Taipei",
       location: "台北圓山花博",
@@ -362,6 +379,19 @@ export const wallEquipmentData: EquipmentCategoryPageData = withNonSmallCaseCapt
         {
           src: "/images/gallery/w-tigertown-2.jpg",
           alt: "XPM somewhere 壁出式啤酒牆另一角度",
+        }
+      ]
+    },
+    {
+      id: "w-tigertownb1",
+      name: "虎山焱",
+      location: "台中老虎城",
+      category: "餐廳",
+      heroPosition: "center center",
+      images: [
+        {
+          src: "/images/gallery/w-tigertownb1-1.jpg",
+          alt: "虎山焱餐廳於台中老虎城木紋美耐板背景牆安裝十口壁出式啤酒牆並搭配綠葉藤蔓元素",
         }
       ]
     },

@@ -123,9 +123,17 @@ const barRegions: VenueRegion[] = [
       { name: "STUCKIN OASIS", location: "台北松菸", mapUrl: "https://maps.app.goo.gl/ck6DWbnH7fJiauct9" },
     ],
   },
+  {
+    region: "台中地區",
+    venues: [{ name: "檳榔", location: "台中" }],
+  },
 ]
 
 const bistroRegions: VenueRegion[] = [
+  {
+    region: "基隆地區",
+    venues: [{ name: "國門廣場", location: "基隆火車站" }],
+  },
   {
     region: "台北地區",
     venues: [
@@ -387,15 +395,15 @@ function VenueGuideArticle({ isVisible, title }: { isVisible: boolean; title: st
           </div>
           <div className="grid grid-cols-3 border-y border-border md:min-w-[22rem]">
             <div className="border-r border-border py-4 pr-5">
-              <span className="block font-display text-2xl text-text-dark">18</span>
+              <span className="block font-display text-2xl text-text-dark">20</span>
               <span className="mt-1 block text-xs text-muted-foreground">間店家</span>
             </div>
             <div className="border-r border-border px-5 py-4">
-              <span className="block font-display text-2xl text-text-dark">8</span>
+              <span className="block font-display text-2xl text-text-dark">9</span>
               <span className="mt-1 block text-xs text-muted-foreground">間酒吧</span>
             </div>
             <div className="py-4 pl-5">
-              <span className="block font-display text-2xl text-text-dark">10</span>
+              <span className="block font-display text-2xl text-text-dark">11</span>
               <span className="mt-1 block text-xs text-muted-foreground">間餐酒館</span>
             </div>
           </div>

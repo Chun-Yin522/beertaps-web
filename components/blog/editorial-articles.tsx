@@ -200,7 +200,7 @@ export function AboutBeerTapsArticle({ isVisible, footer }: EditorialArticleProp
       <section className="mb-20 border-y border-border bg-[#EFEFED] lg:mb-28">
         <div className="grid lg:grid-cols-[minmax(0,1fr)_17rem_17rem]">
           <div className="px-6 py-8 lg:px-8 lg:py-10">
-            <p className="mb-4 font-display text-xs uppercase tracking-[0.22em] text-gold">BEER TAPS / from taps to customers</p>
+            <p className="mb-4 font-display text-xs tracking-[0.22em] text-gold">塔普斯 / from taps to customers</p>
             <h2 className="max-w-xl text-3xl font-normal leading-[1.35] text-text-dark md:text-4xl">把飲品從桶中，穩定送到營業現場的每一個龍頭</h2>
           </div>
           {[
@@ -218,7 +218,7 @@ export function AboutBeerTapsArticle({ isVisible, footer }: EditorialArticleProp
       <section className="mb-20 lg:mb-28">
         <SectionTitle label="What we do / 01" title="不只啤酒，也不只是一台機器" />
         <div className="max-w-5xl space-y-6 text-base leading-9 text-muted-foreground md:text-lg">
-          <p>BEER TAPS 塔普斯提供商用飲品出酒設備的評估、配置與安裝。服務從確認飲品與營業條件開始，接著安排冷藏、酒桶、供氣、管線與龍頭，直到現場測試和操作教學完成。</p>
+          <p>塔普斯提供商用飲品出酒設備的評估、配置與安裝。服務從確認飲品與營業條件開始，接著安排冷藏、酒桶、供氣、管線與龍頭，直到現場測試和操作教學完成。</p>
           <p>啤酒、調酒、茶飲、康普茶、咖啡、氣泡飲與氮氣飲品，需要的冷藏方式、氣體、壓力和接頭並不相同。設備選擇必須回到實際飲品與操作流程，而不是只看外觀或龍頭數量。</p>
         </div>
       </section>
@@ -293,7 +293,7 @@ export function AboutBeerTapsArticle({ isVisible, footer }: EditorialArticleProp
         <div className="max-w-4xl">
           <p className="mb-4 font-display text-xs uppercase tracking-[0.22em] text-gold">After service</p>
           <h2 className="text-3xl font-normal leading-[1.35] text-text-dark">安裝完成後，設備問題仍然找得到人</h2>
-          <p className="mt-5 text-base leading-8 text-muted-foreground">BEER TAPS 提供後續維修與設備問題諮詢。簡單維修與諮詢不另外收取服務費，僅依地點酌收車馬費；另有收費清洗管線等服務，實際狀況請依溝通結果為主。</p>
+          <p className="mt-5 text-base leading-8 text-muted-foreground">塔普斯提供後續維修與設備問題諮詢。簡單維修與諮詢不另外收取服務費，僅依地點酌收車馬費；另有收費清洗管線等服務，實際狀況請依溝通結果為主。</p>
         </div>
         <Link href="/contact" className="group flex h-32 w-32 shrink-0 flex-col items-center justify-center rounded-full bg-gold text-center text-base text-bg-dark md:h-36 md:w-36">
           <ArrowUpRight className="mb-4 h-7 w-7 transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1" aria-hidden="true" />
@@ -441,7 +441,7 @@ export function OpeningSystemGuideArticle({ isVisible, footer }: EditorialArticl
       <section className="mb-16 grid gap-8 border-y border-border bg-[#EFEFED] px-6 py-9 md:px-8 lg:grid-cols-[1fr_auto] lg:items-end">
         <div>
           <p className="mb-4 font-display text-xs uppercase tracking-[0.22em] text-gold">Start planning</p>
-          <h2 className="text-3xl font-normal leading-[1.35] text-text-dark">把現場條件交給 BEER TAPS 塔普斯</h2>
+          <h2 className="text-3xl font-normal leading-[1.35] text-text-dark">把現場條件交給塔普斯</h2>
           <p className="mt-4 text-base leading-8 text-muted-foreground">提供場地照片、吧檯尺寸、飲品品項、預估出杯量與開業時程，我們會協助整理初步設備方向。</p>
         </div>
         <TextLink href="/contact">前往聯絡表單</TextLink>

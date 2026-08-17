@@ -82,7 +82,7 @@ export function ArticleShare({ title }: ArticleShareProps) {
   }, [isOpen])
 
   const getShareData = () => ({
-    title: `${title}｜BEER TAPS`,
+    title: `${title}｜塔普斯`,
     text: title,
     url: window.location.href,
   })

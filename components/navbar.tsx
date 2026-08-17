@@ -54,12 +54,12 @@ export function Navbar() {
           href="/"
           onClick={handleLogoClick}
           className="flex items-center gap-3"
-          aria-label="回到 Beer Taps 首頁"
+          aria-label="回到塔普斯首頁"
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/images/beer-taps-logo-ui.png"
-            alt="Beer Taps Logo"
+            alt="塔普斯 Beer Taps Logo"
             width={58}
             height={58}
             className="h-10 w-auto"

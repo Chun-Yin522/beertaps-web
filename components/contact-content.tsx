@@ -24,7 +24,7 @@ interface ContactMethodProps {
 }
 
 const socialLinks = [
-  { label: "Facebook", value: "Beer Taps", href: SITE.social.facebook, icon: Facebook },
+  { label: "Facebook", value: "塔普斯", href: SITE.social.facebook, icon: Facebook },
   { label: "Instagram", value: "beertaps_", href: SITE.social.instagram, icon: Instagram },
   { label: "Blog", value: "Sunny 的飲品設備筆記", href: SITE.social.blog, icon: NotebookPen },
 ]
@@ -80,7 +80,7 @@ export function ContactContent() {
                 Contact us
               </p>
               <h1 className="text-4xl font-normal leading-[1.3] text-text-dark md:text-5xl lg:whitespace-nowrap">
-                BEER TAPS 塔普斯，幫你找到適合的設備配置
+                塔普斯，幫你找到適合的設備配置
               </h1>
             </div>
 
@@ -154,7 +154,7 @@ export function ContactContent() {
                     width="100%"
                     height="715"
                     className="block border-0 bg-bg-light"
-                    title="Beer Taps 洽詢表單"
+                    title="塔普斯洽詢表單"
                   >
                     載入洽詢表單
                   </iframe>

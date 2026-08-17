@@ -7,7 +7,7 @@ import { buildBreadcrumbJsonLd } from "@/lib/structured-data"
 export const metadata: Metadata = buildPageMetadata({
   title: "產品頁面",
   description:
-    "Beer Taps 提供小型啤酒機、大型出酒系統、壁出式啤酒牆與客製化設備，協助餐飲與飲品品牌建立穩定營業現場。",
+    "塔普斯提供小型啤酒機、大型出酒系統、壁出式啤酒牆與客製化設備，協助餐飲與飲品品牌建立穩定營業現場。",
   path: "/products",
 })
 

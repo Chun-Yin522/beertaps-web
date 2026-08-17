@@ -15,7 +15,7 @@ export default function HomePage() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: SITE.name,
-    alternateName: ["Beer Taps", "塔普斯", "beertaps.tw"],
+    alternateName: [SITE.displayName, SITE.englishName, "beertaps.tw"],
     url: SITE.url,
   }
 

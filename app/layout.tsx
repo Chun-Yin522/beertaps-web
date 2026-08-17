@@ -26,8 +26,8 @@ export const metadata: Metadata = {
   applicationName: SITE.name,
   metadataBase: new URL(SITE.url),
   title: {
-    default: "塔普斯 Beer Taps｜專業飲品出酒設備與吧檯設備",
-    template: "%s｜塔普斯 Beer Taps",
+    default: `${SITE.displayName}｜專業飲品出酒設備與吧檯設備`,
+    template: `%s｜${SITE.displayName}`,
   },
   description: SITE.description,
   keywords: [
@@ -42,9 +42,9 @@ export const metadata: Metadata = {
     "客製化吧檯",
     "餐飲設備",
   ],
-  authors: [{ name: "Beer Taps" }],
-  creator: "Beer Taps",
-  publisher: "Beer Taps",
+  authors: [{ name: SITE.name }],
+  creator: SITE.name,
+  publisher: SITE.name,
   icons: {
     icon: "/images/beer-taps-logo-ui.png",
     apple: "/images/beer-taps-logo-ui.png",
@@ -53,13 +53,13 @@ export const metadata: Metadata = {
     type: "website",
     locale: "zh_TW",
     siteName: SITE.name,
-    title: "塔普斯 Beer Taps｜專業飲品出酒設備與吧檯設備",
+    title: `${SITE.displayName}｜專業飲品出酒設備與吧檯設備`,
     description:
       "專為餐飲、酒吧、咖啡與茶飲品牌打造穩定、耐用且具設計感的飲品出酒設備與商用吧檯系統。",
   },
   twitter: {
     card: "summary_large_image",
-    title: "塔普斯 Beer Taps｜專業飲品出酒設備與吧檯設備",
+    title: `${SITE.displayName}｜專業飲品出酒設備與吧檯設備`,
     description:
       "專為餐飲與飲品品牌打造穩定、耐用且具設計感的商用出酒設備。",
   },
@@ -88,6 +88,7 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "Organization",
     name: SITE.legalName,
+    alternateName: [SITE.displayName, SITE.englishName],
     url: SITE.url,
     logo: new URL("/images/beer-taps-logo.png", SITE.url).toString(),
     email: SITE.email,
